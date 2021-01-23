@@ -7,53 +7,53 @@ namespace GenericExample
     class MyDirectory<T,K>
     {
 
-        T[] numberArray;
-        T[] tempNumberArray;
+        T[] codeArray;
+        T[] tempCodeArray;
 
-        K[] codeArray;
-        K[] tempcodeArray;
+        K[] letterArray;
+        K[] tempLetterArray;
 
         public MyDirectory()
         {
-            numberArray = new T[0];
-            codeArray = new K[0];
+            codeArray = new T[0];
+            letterArray = new K[0];
         }
-        public void Add(T number, K code)
+        public void Add(T code, K letter)
         {
-            tempNumberArray = numberArray;
-            numberArray = new T[numberArray.Length + 1];
+            tempCodeArray = codeArray;
+            codeArray = new T[codeArray.Length + 1];
 
-            tempcodeArray = codeArray;
-            codeArray = new K[codeArray.Length + 1];
+            tempLetterArray = letterArray;
+            letterArray = new K[letterArray.Length + 1];
 
-            for (int i = 0; i < tempNumberArray.Length; i++)
+            for (int i = 0; i < tempCodeArray.Length; i++)
             {
-                for (int j = 0; j < tempcodeArray.Length; j++)
+                for (int j = 0; j < tempLetterArray.Length; j++)
                 {
 
-                    codeArray[j] = tempcodeArray[j];
+                    letterArray[j] = tempLetterArray[j];
                 }
-                numberArray[i] = tempNumberArray[i];
+                codeArray[i] = tempCodeArray[i];
             }
-            numberArray[numberArray.Length - 1] = number;
             codeArray[codeArray.Length - 1] = code;
+            letterArray[letterArray.Length - 1] = letter;
         }
         public int Count
         {
             get
             {
-                Console.Write("\nThe number of ASCII codes added is equal to: ");
-                return numberArray.Length;
+                Console.Write("\nThe code of ASCII letters added is equal to: ");
+                return codeArray.Length;
             }
 
         }
 
         public void ListLetterASCII()
         {
-            Console.WriteLine("---ASCII Codes---");
-            for (int i = 0; i < numberArray.Length; i++)
+            Console.WriteLine("---ASCII letters---");
+            for (int i = 0; i < codeArray.Length; i++)
             {
-                Console.WriteLine(numberArray[i] + " - " + codeArray[i]);
+                Console.WriteLine(codeArray[i] + " - " + letterArray[i]);
             }
         }
     }
